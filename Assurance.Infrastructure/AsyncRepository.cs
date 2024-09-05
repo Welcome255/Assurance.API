@@ -33,7 +33,7 @@ namespace Assurance.Infrastructure
             await _dbContext.SaveChangesAsync();
         }
 
-        public virtual async Task<TBaseEntity> GetByIdAsync(int id)
+        public virtual async Task<TBaseEntity> GetByIdAsync(string id)
         {
             return await _dbContext.Set<TBaseEntity>().FindAsync(id);
         }

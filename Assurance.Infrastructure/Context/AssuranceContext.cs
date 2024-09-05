@@ -9,6 +9,6 @@ namespace Assurance.Infrastructure.Context
         {
         }
 
-        public DbSet<AssuranceClient> Assurance { get; set; }
+        public DbSet<AssuranceTardi> Assurance { get; set; }
     }
 }

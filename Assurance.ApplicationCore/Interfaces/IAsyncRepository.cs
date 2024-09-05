@@ -10,7 +10,7 @@ namespace Assurance.ApplicationCore.Interfaces
 {
     public interface IAsyncRepository<TBaseEntity> where TBaseEntity : BaseEntity
     {
-        Task<TBaseEntity> GetByIdAsync(int id);
+        Task<TBaseEntity> GetByIdAsync(string id);
         Task<IEnumerable<TBaseEntity>> ListAsync();
         Task<IEnumerable<TBaseEntity>> ListAsync(Expression<Func<TBaseEntity, bool>> predicate);
         Task AddAsync(TBaseEntity entity);
