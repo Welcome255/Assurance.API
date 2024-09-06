@@ -2,6 +2,7 @@
 using Assurance.ApplicationCore.Entites;
 using Assurance.ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.CompilerServices;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -25,6 +26,19 @@ namespace Assurance.API.Controllers
             return _assuranceService.ListeContract();
         }
 
+        // GET api/<AssurancesController>/5
+        [HttpGet("{id}")]
+        public Task<AssuranceTardi> Get(string id)
+        {
+            return _assuranceService.ObtenirSelonId(id);
+        }
+
+        [HttpGet("[action]/{id}")]
+        public Task<IEnumerable<AssuranceTardi>> AssuranceParCodePartenaire(string id)
+        {
+            return _assuranceService.ObtenirSelonPartenaire(id);
+        }
+
         // GET: api/<AssurancesController>
         [HttpPost("[action]")]
         public IEnumerable<InteretResponseDTO> CalculInteret(IEnumerable<InteretRequestDTO> comptes)
@@ -32,31 +46,37 @@ namespace Assurance.API.Controllers
             return _assuranceService.CalculInteret(comptes);
         }
 
-        // GET api/<AssurancesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // POST api/<AssurancesController>
+        [HttpPost("[action]")]
+        public  Task Creation([FromBody] AssuranceTardi assurance)
         {
-            return "value";
+            return _assuranceService.Ajouter(assurance);
         }
 
-        // POST api/<AssurancesController>
-        [HttpPost]
-        public Task Post([FromBody] AssuranceTardi assurance)
+        [HttpPost("[action]")]
+        public Task Modifier([FromBody] AssuranceTardi assurance)
         {
-            var result = _assuranceService.Ajouter(assurance);
-            return result;
+            return _assuranceService.Modifier(assurance);
         }
 
         // PUT api/<AssurancesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("[action]/{id}")]
+        public void Confirmer(string id, [FromBody] bool statut)
         {
+            _assuranceService.Confirmer(id, statut);
         }
 
         // DELETE api/<AssurancesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult>  Delete(string id)
         {
+            var assurance = await _assuranceService.ObtenirSelonId(id);
+            if(assurance == null)
+            {
+                return NotFound();
+            }
+            await _assuranceService.Supprimer(assurance);
+            return Ok();
         }
     }
 }
