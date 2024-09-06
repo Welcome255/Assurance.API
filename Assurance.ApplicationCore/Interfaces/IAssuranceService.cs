@@ -12,7 +12,7 @@ namespace Assurance.ApplicationCore.Interfaces
         public Task<IEnumerable<AssuranceTardiDTO>> ListeContract();
         public Task Modifier(AssuranceTardi item);
         public Task Supprimer(AssuranceTardi item);
-        public Task Confirmer(string Id, bool statut);
+        public Task Confirmer(string Id);
         public IEnumerable<InteretResponseDTO> CalculInteret(IEnumerable<InteretRequestDTO> items);
 
     }
