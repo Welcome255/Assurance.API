@@ -61,9 +61,9 @@ namespace Assurance.API.Controllers
 
         // PUT api/<AssurancesController>/5
         [HttpPut("[action]/{id}")]
-        public void Confirmer(string id)
+        public Task Confirmer(string id, [FromBody] bool statut)
         {
-            _assuranceService.Confirmer(id);
+            return _assuranceService.Confirmer(id, statut);
         }
 
         // DELETE api/<AssurancesController>/5

@@ -107,10 +107,10 @@ namespace Assurance.ApplicationCore.Services
 
 
         #region Put
-        public async Task Confirmer(string Id)
+        public async Task Confirmer(string Id, bool statut)
         {
             var assurance = await _repository.GetByIdAsync(Id);
-            assurance.Statut = true;
+            assurance.Statut = statut;
             await _repository.EditAsync(assurance);
         }
         #endregion

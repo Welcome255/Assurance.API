@@ -11,7 +11,7 @@ namespace Assurance.ApplicationCore.Entites
     public class AssuranceTardi : BaseEntity
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public override string? ID { get; set; }
+        public override string ID { get; set; }
         public string ClientID { get; set; }
         public string NomClient { get; set; }
         public string PrenomClient { get; set; }
