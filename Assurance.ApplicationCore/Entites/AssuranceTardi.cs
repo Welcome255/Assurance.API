@@ -13,7 +13,7 @@ namespace Assurance.ApplicationCore.Entites
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override string? ID { get; set; }
         public string ClientID { get; set; }
-        public string NomClient { get; set; }
+        public string NomClient { get; set; } 
         public string PrenomClient { get; set; }
         public DateTime DateDeNaissance { get; set; }
         public string CodePartenaire { get; set; }

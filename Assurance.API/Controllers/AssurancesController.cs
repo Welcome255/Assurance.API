@@ -8,6 +8,10 @@ using System.Runtime.CompilerServices;
 
 namespace Assurance.API.Controllers
 {
+    /// <summary>
+    /// Le controller Assurance gère toutes les opérations lié à la mise en place des assurance
+    /// et le calcul des intérêts
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class AssurancesController : ControllerBase
@@ -20,19 +24,35 @@ namespace Assurance.API.Controllers
         }
 
         // GET: api/<AssurancesController>
+        /// <summary>
+        /// Retourne la liste de tous les contrats de la banque tardi
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public Task<IEnumerable<AssuranceTardiDTO>> Get()
         {
             return _assuranceService.ListeContract();
         }
 
+
         // GET api/<AssurancesController>/5
+        /// <summary>
+        /// Recuperer un contrat en fournissant son id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public Task<AssuranceTardi> Get(string id)
         {
             return _assuranceService.ObtenirSelonId(id);
         }
 
+
+        /// <summary>
+        /// Rechercher les contrats selon le code partenaire
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("[action]/{id}")]
         public Task<IEnumerable<AssuranceTardi>> AssuranceParCodePartenaire(string id)
         {
@@ -40,6 +60,11 @@ namespace Assurance.API.Controllers
         }
 
         // GET: api/<AssurancesController>
+        /// <summary>
+        /// Calcule les interet des clients
+        /// </summary>
+        /// <param name="comptes"></param>
+        /// <returns></returns>
         [HttpPost("[action]")]
         public IEnumerable<InteretResponseDTO> CalculInteret(IEnumerable<InteretRequestDTO> comptes)
         {
@@ -47,12 +72,24 @@ namespace Assurance.API.Controllers
         }
 
         // POST api/<AssurancesController>
+        /// <summary>
+        /// Permet la création d'une assurance
+        /// </summary>
+        /// <param name="assurance"></param>
+        /// <returns></returns>
         [HttpPost("[action]")]
         public  Task Creation([FromBody] AssuranceTardi assurance)
         {
             return _assuranceService.Ajouter(assurance);
         }
 
+
+
+        /// <summary>
+        /// Permet la modification d'un contrat
+        /// </summary>
+        /// <param name="assurance"></param>
+        /// <returns></returns>
         [HttpPost("[action]")]
         public Task Modifier([FromBody] AssuranceTardi assurance)
         {
@@ -60,6 +97,12 @@ namespace Assurance.API.Controllers
         }
 
         // PUT api/<AssurancesController>/5
+        /// <summary>
+        /// Confirme la création d'un contrat
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="statut"></param>
+        /// <returns></returns>
         [HttpPut("[action]/{id}")]
         public Task Confirmer(string id, [FromBody] bool statut)
         {
@@ -67,6 +110,11 @@ namespace Assurance.API.Controllers
         }
 
         // DELETE api/<AssurancesController>/5
+        /// <summary>
+        /// Supprime en contrat en spécifiant l'id du contrat
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult>  Delete(string id)
         {

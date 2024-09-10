@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Assurance.API</name>
+    </assembly>
+    <members>
+        <member name="T:Assurance.API.Controllers.AssurancesController">
+            <summary>
+            Le controller Assurance gère toutes les opérations lié à la mise en place des assurance
+            et le calcul des intérêts
+            </summary>
+        </member>
+        <member name="M:Assurance.API.Controllers.AssurancesController.Get">
+            <summary>
+            Retourne la liste de tous les contrats de la banque tardi
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Assurance.API.Controllers.AssurancesController.Get(System.String)">
+            <summary>
+            Recuperer un contrat en fournissant son id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Assurance.API.Controllers.AssurancesController.AssuranceParCodePartenaire(System.String)">
+            <summary>
+            Rechercher les contrats selon le code partenaire
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Assurance.API.Controllers.AssurancesController.CalculInteret(System.Collections.Generic.IEnumerable{Assurance.ApplicationCore.DTO.InteretRequestDTO})">
+            <summary>
+            Calcule les interet des clients
+            </summary>
+            <param name="comptes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Assurance.API.Controllers.AssurancesController.Creation(Assurance.ApplicationCore.Entites.AssuranceTardi)">
+            <summary>
+            Permet la création d'une assurance
+            </summary>
+            <param name="assurance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Assurance.API.Controllers.AssurancesController.Modifier(Assurance.ApplicationCore.Entites.AssuranceTardi)">
+            <summary>
+            Permet la modification d'un contrat
+            </summary>
+            <param name="assurance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Assurance.API.Controllers.AssurancesController.Confirmer(System.String,System.Boolean)">
+            <summary>
+            Confirme la création d'un contrat
+            </summary>
+            <param name="id"></param>
+            <param name="statut"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Assurance.API.Controllers.AssurancesController.Delete(System.String)">
+            <summary>
+            Supprime en contrat en spécifiant l'id du contrat
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
